@@ -18,9 +18,10 @@ A terraform module to deploy a metrics-server on Amazon EKS cluster.
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
-| aws | ~> 2.0 |
-| helm | ~> 1.2 |
+| terraform | >= 0.12.26, < 0.14.0 |
+| aws | >= 2.0, < 4.0 |
+| helm | >= 1.0, < 1.4.0 |
+| kubernetes | >=1.10.0 |
 
 ## Inputs
 
@@ -28,7 +29,7 @@ A terraform module to deploy a metrics-server on Amazon EKS cluster.
 |------|-------------|------|---------|:--------:|
 | enabled | Variable indicating whether deployment is enabled | `bool` | `true` | no |
 | helm\_chart\_name | Helm chart name to be installed | `string` | `"metrics-server"` | no |
-| helm\_chart\_version | Version of the Helm chart | `string` | `"2.11.1"` | no |
+| helm\_chart\_version | Version of the Helm chart | `string` | `"2.11.2"` | no |
 | helm\_release\_name | Helm release name | `string` | `"metrics-server"` | no |
 | helm\_repo\_url | Helm repository | `string` | `"https://kubernetes-charts.storage.googleapis.com"` | no |
 | k8s\_namespace | The K8s namespace in which the metrics-server service account has been created | `string` | `"kube-system"` | no |
