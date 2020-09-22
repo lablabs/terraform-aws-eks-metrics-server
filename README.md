@@ -13,14 +13,31 @@ We help companies build, run, deploy and scale software and infrastructure by em
 
 A terraform module to deploy a metrics-server on Amazon EKS cluster.
 
+## Related Projects
+
+Check out these related projects.
+
+- [terraform-aws-eks-calico](https://github.com/lablabs/terraform-aws-eks-calico)
+- [terraform-aws-eks-external-dns](https://github.com/lablabs/terraform-aws-eks-external-dns)
+- [terraform-aws-eks-cluster-autoscaler](https://github.com/lablabs/terraform-aws-eks-cluster-autoscaler)
+- [terraform-aws-eks-alb-ingress](https://github.com/lablabs/terraform-aws-eks-alb-ingress)
+- [terraform-aws-eks-prometheus-node-exporter](https://github.com/lablabs/terraform-aws-eks-prometheus-node-exporter)
+- [terraform-aws-eks-kube-state-metrics](https://github.com/lablabs/terraform-aws-eks-kube-state-metrics)
+- [terraform-aws-eks-node-problem-detector](https://github.com/lablabs/terraform-aws-eks-node-problem-detector)
+
+## Examples
+
+See [Basic example](examples/basic/README.md) for further information.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
-| aws | ~> 2.0 |
-| helm | ~> 1.2 |
+| terraform | >= 0.12.26, < 0.14.0 |
+| aws | >= 2.0, < 4.0 |
+| helm | >= 1.0, < 1.4.0 |
+| kubernetes | >=1.10.0 |
 
 ## Inputs
 
@@ -28,7 +45,7 @@ A terraform module to deploy a metrics-server on Amazon EKS cluster.
 |------|-------------|------|---------|:--------:|
 | enabled | Variable indicating whether deployment is enabled | `bool` | `true` | no |
 | helm\_chart\_name | Helm chart name to be installed | `string` | `"metrics-server"` | no |
-| helm\_chart\_version | Version of the Helm chart | `string` | `"2.11.1"` | no |
+| helm\_chart\_version | Version of the Helm chart | `string` | `"2.11.2"` | no |
 | helm\_release\_name | Helm release name | `string` | `"metrics-server"` | no |
 | helm\_repo\_url | Helm repository | `string` | `"https://kubernetes-charts.storage.googleapis.com"` | no |
 | k8s\_namespace | The K8s namespace in which the metrics-server service account has been created | `string` | `"kube-system"` | no |
