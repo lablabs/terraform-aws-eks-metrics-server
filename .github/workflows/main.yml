@@ -21,6 +21,11 @@ jobs:
       - uses: actions/setup-go@v2
         name: "SETUP: Go"
 
+      - uses: hashicorp/setup-terraform@v1
+        name: "SETUP: Terraform"
+        with:
+          terraform_version: 0.12.26
+
       - uses: pat-s/always-upload-cache@v2.0.0
         id: cache-terraform-docs
         name: "CACHE: terraform-docs Go module"
@@ -42,7 +47,7 @@ jobs:
 
       - shell: bash
         name: "SETUP: Go path"
-        run: echo '::add-path::~/go/bin/'
+        run: echo "~/go/bin/" >> $GITHUB_PATH
 
       - uses: actions/checkout@v1
         name: Checkout source code
@@ -85,7 +90,7 @@ jobs:
       - shell: bash
         name: "SETUP: TFLint path"
         run: |
-          echo '::add-path::~/tflint/bin/'
+          echo "~/tflint/bin/" >> $GITHUB_PATH
 
       - uses: pre-commit/action@v2.0.0
         name: "RUN: pre-commit"
