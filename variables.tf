@@ -28,7 +28,7 @@ variable "helm_release_name" {
 
 variable "helm_repo_url" {
   type        = string
-  default     = "https://kubernetes-charts.storage.googleapis.com"
+  default     = "https://charts.helm.sh/stable/"
   description = "Helm repository"
 }
 
