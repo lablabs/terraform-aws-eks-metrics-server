@@ -21,6 +21,11 @@ jobs:
       - uses: actions/setup-go@v2
         name: "SETUP: Go"
 
+      - uses: hashicorp/setup-terraform@v1
+        name: "SETUP: Terraform"
+        with:
+          terraform_version: 0.12.26
+
       - uses: pat-s/always-upload-cache@v2.0.0
         id: cache-terraform-docs
         name: "CACHE: terraform-docs Go module"
