@@ -16,7 +16,7 @@ variable "helm_chart_name" {
 
 variable "helm_chart_version" {
   type        = string
-  default     = "2.11.2"
+  default     = "5.7.1"
   description = "Version of the Helm chart"
 }
 
@@ -28,7 +28,7 @@ variable "helm_release_name" {
 
 variable "helm_repo_url" {
   type        = string
-  default     = "https://charts.helm.sh/stable/"
+  default     = "https://charts.bitnami.com/bitnami"
   description = "Helm repository"
 }
 
