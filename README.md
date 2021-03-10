@@ -57,7 +57,7 @@ No Modules.
 |------|-------------|------|---------|:--------:|
 | enabled | Variable indicating whether deployment is enabled | `bool` | `true` | no |
 | helm\_chart\_name | Helm chart name to be installed | `string` | `"metrics-server"` | no |
-| helm\_chart\_version | Version of the Helm chart | `string` | `"5.7.2"` | no |
+| helm\_chart\_version | Version of the Helm chart | `string` | `"5.7.1"` | no |
 | helm\_release\_name | Helm release name | `string` | `"metrics-server"` | no |
 | helm\_repo\_url | Helm repository | `string` | `"https://charts.bitnami.com/bitnami"` | no |
 | k8s\_namespace | The K8s namespace in which the metrics-server service account has been created | `string` | `"kube-system"` | no |
