@@ -14,9 +14,9 @@ terraform {
       source  = "hashicorp/null"
       version = ">= 2.0"
     }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = ">= 1.10"
+    utils = {
+      source  = "cloudposse/utils"
+      version = ">= 0.12.0"
     }
   }
 }

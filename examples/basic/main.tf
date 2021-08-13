@@ -36,8 +36,6 @@ module "eks_workers" {
   associate_public_ip_address = true
 }
 
-# Use the module:
-
 module "metrics_server" {
   source = "../../"
 }
