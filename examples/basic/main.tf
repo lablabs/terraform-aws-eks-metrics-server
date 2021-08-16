@@ -25,8 +25,7 @@ module "eks_workers" {
 
   cluster_certificate_authority_data = module.eks_cluster.eks_cluster_certificate_authority_data
   cluster_endpoint                   = module.eks_cluster.eks_cluster_endpoint
-  cluster_name                       = module.eks_cluster.eks_cluster_id
-  cluster_security_group_id          = module.eks_cluster.security_group_id
+  cluster_name                       = "metrics-server"
   instance_type                      = "t3.medium"
   max_size                           = 1
   min_size                           = 1
@@ -38,4 +37,6 @@ module "eks_workers" {
 
 module "metrics_server" {
   source = "../../"
+
+  cluster_name = module.eks_cluster.eks_cluster_id
 }
