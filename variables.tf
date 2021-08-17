@@ -60,5 +60,5 @@ variable "cluster_name" {
 variable "values" {
   type        = string
   default     = ""
-  description = "Additional yaml encoded values which will be passed to the Helm chart, see https://hub.helm.sh/charts/stable/cluster-autoscaler"
+  description = "Additional yaml encoded values which will be passed to the Helm chart."
 }
