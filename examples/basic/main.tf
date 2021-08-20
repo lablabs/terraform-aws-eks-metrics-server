@@ -37,6 +37,4 @@ module "eks_workers" {
 
 module "metrics_server" {
   source = "../../"
-
-  cluster_name = module.eks_cluster.eks_cluster_id
 }

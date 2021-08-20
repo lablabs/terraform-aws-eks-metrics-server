@@ -52,11 +52,6 @@ variable "settings" {
   description = "Additional settings which will be passed to the Helm chart values, see https://hub.helm.sh/charts/stable/metrics-server"
 }
 
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster"
-}
-
 variable "values" {
   type        = string
   default     = ""
