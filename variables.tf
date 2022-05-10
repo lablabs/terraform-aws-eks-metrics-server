@@ -22,11 +22,6 @@ variable "namespace" {
   description = "The K8s namespace in which the metrics-server service account has been created"
 }
 
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster"
-}
-
 variable "settings" {
   type        = map(any)
   default     = {}
@@ -51,7 +46,7 @@ variable "argo_namespace" {
   description = "Namespace to deploy ArgoCD application CRD to"
 }
 
-variable "argo_destionation_server" {
+variable "argo_destination_server" {
   type        = string
   default     = "https://kubernetes.default.svc"
   description = "Destination server for ArgoCD Application"
@@ -108,7 +103,7 @@ variable "argo_kubernetes_manifest_field_manager_force_conflicts" {
   description = "Forcibly override any field manager conflicts when applying the kubernetes manifest resource"
 }
 
-variable "argo_kubernetes_manifest_wait_for_fields" {
+variable "argo_kubernetes_manifest_wait_fields" {
   type        = map(string)
   default     = {}
   description = "A map of fields and a corresponding regular expression with a pattern to wait for. The provider will wait until the field matches the regular expression. Use * for any value."
