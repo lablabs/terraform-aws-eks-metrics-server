@@ -2,7 +2,6 @@
 
 locals {
   values = yamlencode({
-    # "clusterName" : var.cluster_name
   })
 }
 
