@@ -34,4 +34,21 @@ module "eks_node_group" {
 
 module "metrics_server" {
   source = "../../"
+
+  enabled           = true
+  argo_enabled      = false
+  argo_helm_enabled = false
+
+  cluster_identity_oidc_issuer     = module.eks_cluster.eks_cluster_identity_oidc_issuer
+  cluster_identity_oidc_issuer_arn = module.eks_cluster.eks_cluster_identity_oidc_issuer_arn
+
+  helm_release_name = "metrics-server"
+  namespace         = "kube-system"
+
+  values = yamlencode({
+    "replicas" : "2"
+  })
+
+  helm_timeout = 240
+  helm_wait    = true
 }
