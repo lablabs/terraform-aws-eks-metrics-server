@@ -2,7 +2,7 @@
 
 [![labyrinth labs logo](ll-logo.png)](https://lablabs.io/)
 
-We help companies build, run, deploy and scale software and infrastructure by embracing the right technologies and principles. Check out our website at https://lablabs.io/
+We help companies build, run, deploy and scale software and infrastructure by embracing the right technologies and principles. Check out our website at <https://lablabs.io/>
 
 ---
 
@@ -15,15 +15,25 @@ A terraform module to deploy a metrics-server on Amazon EKS cluster.
 
 ## Related Projects
 
-Check out these related projects.
+Check out other [terraform kubernetes addons](https://github.com/orgs/lablabs/repositories?q=terraform-aws-eks&type=public&language=&sort=).
 
-- [terraform-aws-eks-calico](https://github.com/lablabs/terraform-aws-eks-calico)
-- [terraform-aws-eks-external-dns](https://github.com/lablabs/terraform-aws-eks-external-dns)
-- [terraform-aws-eks-cluster-autoscaler](https://github.com/lablabs/terraform-aws-eks-cluster-autoscaler)
-- [terraform-aws-eks-alb-ingress](https://github.com/lablabs/terraform-aws-eks-alb-ingress)
-- [terraform-aws-eks-prometheus-node-exporter](https://github.com/lablabs/terraform-aws-eks-prometheus-node-exporter)
-- [terraform-aws-eks-kube-state-metrics](https://github.com/lablabs/terraform-aws-eks-kube-state-metrics)
-- [terraform-aws-eks-node-problem-detector](https://github.com/lablabs/terraform-aws-eks-node-problem-detector)
+## Deployment methods
+
+### Helm
+
+Deploy helm chart by helm (default method, set `enabled = true`)
+
+### Argo kubernetes
+
+Deploy helm chart as argo application by kubernetes manifest (set `enabled = true` and `argo_enabled = true`)
+
+### Argo helm
+
+When deploying with ArgoCD application, Kubernetes terraform provider requires access to Kubernetes cluster API during plan time. This introduces potential issue when you want to deploy the cluster with this addon at the same time, during the same Terraform run.
+
+To overcome this issue, the module deploys the ArgoCD application object using the Helm provider, which does not require API access during plan. If you want to deploy the application using this workaround, you can set the `argo_helm_enabled` variable to `true`.
+
+Create helm release resource and deploy it as argo application (set `enabled = true`, `argo_enabled = true` and `argo_helm_enabled = true`)
 
 ## Examples
 
@@ -115,7 +125,7 @@ No modules.
 | <a name="input_helm_wait"></a> [helm\_wait](#input\_helm\_wait) | Will wait until all helm release resources are in a ready state before marking the release as successful. It will wait for as long as timeout | `bool` | `false` | no |
 | <a name="input_helm_wait_for_jobs"></a> [helm\_wait\_for\_jobs](#input\_helm\_wait\_for\_jobs) | If wait is enabled, will wait until all helm Jobs have been completed before marking the release as successful. It will wait for as long as timeout | `bool` | `false` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The K8s namespace in which the metrics-server service account has been created | `string` | `"kube-system"` | no |
-| <a name="input_settings"></a> [settings](#input\_settings) | Additional settings which will be passed to the Helm chart values, see https://hub.helm.sh/charts/stable/metrics-server | `map(any)` | `{}` | no |
+| <a name="input_settings"></a> [settings](#input\_settings) | Additional settings which will be passed to the Helm chart values, see <https://hub.helm.sh/charts/stable/metrics-server> | `map(any)` | `{}` | no |
 | <a name="input_values"></a> [values](#input\_values) | Additional yaml encoded values which will be passed to the Helm chart. | `string` | `""` | no |
 
 ## Outputs
@@ -137,7 +147,6 @@ check your code before you will create pull-requests. See
 [pre-commit documentation](https://pre-commit.com/) and
 [GitHub Actions documentation](https://docs.github.com/en/actions) for further
 details.
-
 
 ## License
 
