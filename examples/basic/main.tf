@@ -46,7 +46,9 @@ module "metrics_server" {
   namespace         = "kube-system"
 
   values = yamlencode({
-    "replicas" : "2"
+    "podLabels" : {
+      "app" : "test-metrics-server"
+    }
   })
 
   helm_timeout = 240
