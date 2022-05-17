@@ -2,9 +2,7 @@
 name: Feature request
 description: Suggest an idea for this project
 title: "feature: "
-labels: ["feature"]
-# assignees:
-#   - monolithprojects
+labels: enhancement
 
 body:
 - type: markdown

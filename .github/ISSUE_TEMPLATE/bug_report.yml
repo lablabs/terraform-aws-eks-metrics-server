@@ -2,9 +2,7 @@
 name: Bug report
 description: File a bug report
 title: "bug: "
-labels: ["bug"]
-# assignees:
-#   - monolithprojects
+labels: bug
 
 body:
 - type: markdown
@@ -60,8 +58,6 @@ body:
       the prompt line. Please don't wrap it with tripple backticks — your
       whole input will be turned into a code snippet automatically.
     render: console
-    value: |
-      $ terraform --version
     placeholder: |
         $ terraform --version
         Terraform v1.1.4
@@ -85,21 +81,6 @@ body:
       ```hcl (paste below)
 
       ```
-    placeholder: |
-      1. Implement the following terraform code:
-
-         ```hcl
-        provider "aws" {
-          region = "eu-central-1"
-        }
-
-        module "lablabs_modeule" {
-          source = "../../"
-        }
-         ...
-         ```
-      2. Then run `terraform init`
-      3. An error occurs.
   validations:
     required: true
 
