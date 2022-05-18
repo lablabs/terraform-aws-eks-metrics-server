@@ -15,6 +15,27 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
+    - shell: bash
+      name: "Install checkov"
+      run: pip install checkov
+
+    - shell: bash
+      name: "INSTALL: tflint"
+      if: steps.cache-tflint.outputs.cache-hit != 'true'
+      run: |
+        wget https://github.com/terraform-linters/tflint/releases/download/v0.36.2/tflint_linux_amd64.zip
+        unzip tflint_linux_amd64.zip
+        mkdir -p ~/tflint/bin/
+        install tflint ~/tflint/bin/
+
+    - shell: bash
+      name: "SETUP: tflint path"
+      run: echo '~/tflint/bin/' >> $GITHUB_PATH
+
+    - shell: bash
+      name: "INIT: TFLint"
+      run: tflint --init
+
     - uses: pre-commit/action@v2.0.3
-      env:
-        SKIP: tflint,terraform_docs
+      # env:
+      #   SKIP: terraform_docs
