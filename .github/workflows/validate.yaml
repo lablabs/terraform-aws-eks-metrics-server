@@ -3,11 +3,11 @@ name: Terraform validate
 on:
   push:
     branches:
-      - main
       - unify_refactoring
   pull_request:
     branches:
       - main
+      - master
 
 jobs:
   terraform-validate:

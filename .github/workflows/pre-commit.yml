@@ -9,6 +9,11 @@ on:
     branches:
       - main
 
+env:
+  TERRAFORM_DOCS_VERSION: "v0.16.0"
+  TFLINT_VERSION: "v0.36.2"
+  TFSEC_VERSION: "v1.21.0"
+
 jobs:
   pre-commit:
     runs-on: ubuntu-20.04
@@ -20,22 +25,20 @@ jobs:
       run: pip install checkov
 
     - shell: bash
-      name: "INSTALL: tflint"
-      if: steps.cache-tflint.outputs.cache-hit != 'true'
+      name: "Pre-commit hooks prerequisites"
       run: |
-        wget https://github.com/terraform-linters/tflint/releases/download/v0.36.2/tflint_linux_amd64.zip
+        wget https://github.com/terraform-docs/terraform-docs/releases/download/${{ env.TERRAFORM_DOCS_VERSION }}/terraform-docs-${{ env.TERRAFORM_DOCS_VERSION }}-linux-amd64.tar.gz
+        tar xvzf terraform-docs-${{ env.TERRAFORM_DOCS_VERSION }}-linux-amd64.tar.gz
+        mkdir -p ~/terraform-docs/bin/
+        install terraform-docs ~/terraform-docs/bin/
+        echo '~/terraform-docs/bin/' >> $GITHUB_PATH
+        wget https://github.com/terraform-linters/tflint/releases/download/${{ env.TFLINT_VERSION }}/tflint_linux_amd64.zip
         unzip tflint_linux_amd64.zip
         mkdir -p ~/tflint/bin/
+        echo '~/tflint/bin/' >> $GITHUB_PATH
         install tflint ~/tflint/bin/
-
-    - shell: bash
-      name: "SETUP: tflint path"
-      run: echo '~/tflint/bin/' >> $GITHUB_PATH
-
-    - shell: bash
-      name: "INIT: TFLint"
-      run: tflint --init
+        tflint --init
 
     - uses: pre-commit/action@v2.0.3
-      # env:
-      #   SKIP: terraform_docs
+      env:
+        SKIP: terraform_docs
