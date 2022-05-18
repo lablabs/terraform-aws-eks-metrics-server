@@ -47,6 +47,7 @@ See [Basic example](examples/basic/README.md) for further information.
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.4.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.10 |
 | <a name="requirement_utils"></a> [utils](#requirement\_utils) | >= 0.14.0 |
 
 ## Modules
