@@ -6,8 +6,8 @@ We help companies build, run, deploy and scale software and infrastructure by em
 
 ---
 
-![Terraform validation](https://github.com/lablabs/terraform-aws-eks-metrics-server/workflows/Terraform%20validate/badge.svg?branch=master)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-success?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![Terraform validate](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml/badge.svg?branch=main)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml)
+[![pre-commit](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yml/badge.svg?branch=main)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yml)
 
 ## Description
 

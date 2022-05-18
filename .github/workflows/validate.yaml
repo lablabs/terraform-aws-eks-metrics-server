@@ -1,9 +1,7 @@
 name: Terraform validate
 
 on:
-  push:
-    branches:
-      - unify_refactoring
+  workflow_dispatch:
   pull_request:
     branches:
       - main
