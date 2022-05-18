@@ -37,7 +37,7 @@ jobs:
         mkdir -p ~/tflint/bin/
         echo '~/tflint/bin/' >> $GITHUB_PATH
         install tflint ~/tflint/bin/
-        tflint --init
+        ~/tflint/bin/tflint --init
 
     - uses: pre-commit/action@v2.0.3
       env:
