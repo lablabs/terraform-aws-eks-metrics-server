@@ -8,11 +8,31 @@ on:
       - master
 
 jobs:
+  versionExtract:
+    name: Extract min/max Terraform versions
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Extract Terraform min/max versions
+        id: minMax
+        uses: clowdhaus/terraform-min-max@main
+        with:
+          directory: .
+    outputs:
+      minVersion: ${{ steps.minMax.outputs.minVersion }}
+      maxVersion: ${{ steps.minMax.outputs.maxVersion }}
+
   terraform-validate:
     runs-on: ubuntu-20.04
+    needs: versionExtract
     strategy:
       matrix:
-        tf_ver: [1.1.9,1.1.0,1.0.11,0.15.5,0.14.11]
+        tf_ver:
+          - ${{ needs.versionExtract.outputs.minVersion }}
+          - ${{ needs.versionExtract.outputs.maxVersion }}
 
     steps:
     - uses: actions/checkout@v2
