@@ -20,18 +20,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-    - shell: bash
-      name: "Install checkov"
-      run: pip install checkov
 
     - shell: bash
-      name: "Pre-commit hooks prerequisites"
+      name: Install additional pre-commit hooks
       run: |
+        echo "########### Install Checkov ####################"
+        pip install checkov
+
+        echo "########### Install Terraform-docs #############"
         wget https://github.com/terraform-docs/terraform-docs/releases/download/${{ env.TERRAFORM_DOCS_VERSION }}/terraform-docs-${{ env.TERRAFORM_DOCS_VERSION }}-linux-amd64.tar.gz
         tar xvzf terraform-docs-${{ env.TERRAFORM_DOCS_VERSION }}-linux-amd64.tar.gz
         mkdir -p ~/terraform-docs/bin/
         install terraform-docs ~/terraform-docs/bin/
         echo '~/terraform-docs/bin/' >> $GITHUB_PATH
+
+        echo "########### Install Terraform-linters ##########"
         wget https://github.com/terraform-linters/tflint/releases/download/${{ env.TFLINT_VERSION }}/tflint_linux_amd64.zip
         unzip tflint_linux_amd64.zip
         mkdir -p ~/tflint/bin/
@@ -40,5 +43,3 @@ jobs:
         ~/tflint/bin/tflint --init
 
     - uses: pre-commit/action@v2.0.3
-      env:
-        SKIP: terraform_docs
