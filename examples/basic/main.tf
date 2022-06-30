@@ -32,6 +32,61 @@ module "eks_node_group" {
   depends_on     = [module.eks_cluster.kubernetes_config_map_id]
 }
 
+module "metrics_server_disabled" {
+  source = "../../"
+
+  enabled = false
+}
+
 module "metrics_server" {
   source = "../../"
+
+  enabled           = true
+  argo_enabled      = false
+  argo_helm_enabled = false
+
+  helm_release_name = "metrics-server"
+  namespace         = "kube-system"
+
+  values = yamlencode({
+    "podLabels" : {
+      "app" : "test-metrics-server"
+    }
+  })
+
+  helm_timeout = 240
+  helm_wait    = true
+}
+
+module "metrics_server_argo_kubernetes" {
+  source = "../../"
+
+  enabled           = true
+  argo_enabled      = true
+  argo_helm_enabled = false
+
+  helm_release_name = "metrics-server"
+  namespace         = "kube-system"
+
+  argo_sync_policy = {
+    "automated" : {}
+    "syncOptions" = ["CreateNamespace=true"]
+  }
+}
+
+module "metrics_server_argo_helm" {
+  source = "../../"
+
+  enabled           = true
+  argo_enabled      = true
+  argo_helm_enabled = true
+
+  helm_release_name = "metrics-server"
+  namespace         = "kube-system"
+
+  argo_namespace = "argo"
+  argo_sync_policy = {
+    "automated" : {}
+    "syncOptions" = ["CreateNamespace=true"]
+  }
 }
