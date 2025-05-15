@@ -10,7 +10,8 @@
 locals {
 
   addon = {
-    name = "metrics-server"
+    name      = "metrics-server"
+    namespace = "kube-system"
 
     helm_chart_version = "3.12.2"
     helm_repo_url      = "https://kubernetes-sigs.github.io/metrics-server"
