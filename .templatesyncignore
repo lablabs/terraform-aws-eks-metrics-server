@@ -6,3 +6,7 @@ README.md
 .secrets.baseline
 .github/workflows/renovate.yaml
 renovate.json
+variables-addon-oidc.tf
+variables-addon-irsa.tf
+addon-irsa.tf
+addon-oidc.tf
