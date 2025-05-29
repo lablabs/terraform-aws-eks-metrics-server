@@ -1,10 +1,10 @@
 <!-- BEGIN_TF_DOCS -->
-# AWS EKS metrics server Terraform module
+# AWS EKS Metrics Server Terraform module
 
-A terraform module to deploy a [metrics-server](https://github.com/kubernetes-sigs/metrics-server) on Amazon EKS cluster.
+A Terraform module to deploy the [metrics-server](https://github.com/kubernetes-sigs/metrics-server) on Amazon EKS cluster.
 
-[![Terraform validate](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml/badge.svg?branch=main)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml)
-[![pre-commit](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yml/badge.svg?branch=main)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yml)
+[![Terraform validate](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/validate.yaml)
+[![pre-commit](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/lablabs/terraform-aws-eks-metrics-server/actions/workflows/pre-commit.yaml)
 
 ---
 
