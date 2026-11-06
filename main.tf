@@ -11,7 +11,7 @@ locals {
     name      = "metrics-server"
     namespace = "kube-system"
 
-    helm_chart_version = "3.12.2"
+    helm_chart_version = "3.14.0" # 0.9.0
     helm_repo_url      = "https://kubernetes-sigs.github.io/metrics-server"
   }
 
